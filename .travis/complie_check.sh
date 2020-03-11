@@ -7,7 +7,7 @@ for dist in ${dist_list}; do
     GOARCH=$(echo ${dist} | cut -d "/" -f 2)
     echo "Checking compile support for ${GOOS}/${GOARCH}"
     set +e
-    GOOS=${GOOS} GOARCH=${GOARCH} go tool compile -V
+    GOOS=${GOOS} GOARCH=${GOARCH} go tool compile -V > /dev/null
     if [[ $? -ne 0 ]]; then
         echo "compile support for ${GOOS}/${GOARCH} is not provided; skipping"
         continue
